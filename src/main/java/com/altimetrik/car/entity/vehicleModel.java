@@ -4,6 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
+@NamedQueries({@NamedQuery(name = "vehicleModel.findAll",
+        query="SELECT vm FROM vehicleModel vm ORDER BY vm.modelId"),
+
+})
+
 public class vehicleModel {
     @Id
     private String modelId;
@@ -12,23 +18,9 @@ public class vehicleModel {
     private double rating;
     private String manufactureId;
 
-
-
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private vehicleManufacture vehicleManufacture;
-    //private List<vehicleManufacture> vehicleManufacture;
 
-    public com.altimetrik.car.entity.vehicleManufacture getVehicleManufacture() {
-        return vehicleManufacture;
-    }
-
-    public void setVehicleManufacture(com.altimetrik.car.entity.vehicleManufacture vehicleManufacture) {
-        this.vehicleManufacture = vehicleManufacture;
-    }
-
-
-//    @OneToMany
-//    private vehicleManufacture vehicleManufacture;
 
     public String getModelId() {
         return modelId;
@@ -70,11 +62,17 @@ public class vehicleModel {
         this.manufactureId = manufactureId;
     }
 
+    public com.altimetrik.car.entity.vehicleManufacture getVehicleManufacture() {
+        return vehicleManufacture;
+    }
 
+    public void setVehicleManufacture(com.altimetrik.car.entity.vehicleManufacture vehicleManufacture) {
+        this.vehicleManufacture = vehicleManufacture;
+    }
 
     @Override
     public String toString() {
-        return "vehicleModel{" +
+        return "vehicleModelController{" +
                 "modelId='" + modelId + '\'' +
                 ", modelName='" + modelName + '\'' +
                 ", year='" + year + '\'' +

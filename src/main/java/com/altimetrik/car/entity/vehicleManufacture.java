@@ -2,16 +2,25 @@ package com.altimetrik.car.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
+
 import com.altimetrik.car.entity.*;
+
 @Entity
+@NamedQueries({@NamedQuery(name = "vehicleManufacture.findAll",
+        query="SELECT vmf FROM vehicleManufacture vmf"),
+})
+
 public class vehicleManufacture {
     @Id
     private String manufactureId;
     private String manufactureName;
     private String vehicleTypeId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private vehicleModel vehicleModel;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private vehicleType vehicleType;
+
+
 
     public String getManufactureId() {
         return manufactureId;
@@ -37,11 +46,11 @@ public class vehicleManufacture {
         this.vehicleTypeId = vehicleTypeId;
     }
 
-    public com.altimetrik.car.entity.vehicleModel getVehicleModel() {
-        return vehicleModel;
+    public com.altimetrik.car.entity.vehicleType getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicleModel(com.altimetrik.car.entity.vehicleModel vehicleModel) {
-        this.vehicleModel = vehicleModel;
+    public void setVehicleType(com.altimetrik.car.entity.vehicleType vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }
