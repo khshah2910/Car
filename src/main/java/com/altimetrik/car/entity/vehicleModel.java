@@ -16,7 +16,6 @@ public class vehicleModel {
     private String modelName;
     private String year;
     private double rating;
-    private String manufactureId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private vehicleManufacture vehicleManufacture;
@@ -52,14 +51,6 @@ public class vehicleModel {
 
     public void setModelName(String modelName) {
         this.modelName = modelName;
-    }
-
-    public String getManufactureId() {
-        return manufactureId;
-    }
-
-    public void setManufactureId(String manufactureId) {
-        this.manufactureId = manufactureId;
     }
 
     public com.altimetrik.car.entity.vehicleManufacture getVehicleManufacture() {

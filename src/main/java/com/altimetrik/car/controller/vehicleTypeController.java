@@ -16,11 +16,9 @@ public class vehicleTypeController {
     @Autowired
     vehicleTypeService vehicleTypeService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value= "/VehicleType",method = RequestMethod.GET)
     public List<vehicleType> findAll(){
         return  vehicleTypeService.findAll();
 
     }
-
-
 }
